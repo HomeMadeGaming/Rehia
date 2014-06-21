@@ -1,0 +1,22 @@
+body {
+
+}
+header{
+	text-align: center;
+	color: white;
+	text-shadow: 2px 2px 2px black;
+	background: -webkit-linear-gradient(23deg, rgba(200,0,0,.7), rgba(200,100,100,.7), rgba(200,0,0,.7), rgba(200,100,100,.7),rgba(200,0,0,.7), rgba(200,100,100,.7)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(23deg, rgba(200,0,0,.7), rgba(200,100,100,.7), rgba(200,0,0,.7), rgba(200,100,100,.7),rgba(200,0,0,.7), rgba(200,100,100,.7)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(23deg, rgba(200,0,0,.7), rgba(200,100,100,.7), rgba(200,0,0,.7), rgba(200,100,100,.7),rgba(200,0,0,.7), rgba(200,100,100,.7)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(23deg, rgba(200,0,0,.7), rgba(200,100,100,.7), rgba(200,0,0,.7), rgba(200,100,100,.7),rgba(200,0,0,.7), rgba(200,100,100,.7)); /* Standard syntax (must be last) */
+}
+
+#main{
+	float: left;
+}
+#description{
+	float: right;
+}
+footer{
+	clear: both;
+}
