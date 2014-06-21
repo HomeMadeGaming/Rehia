@@ -23,6 +23,7 @@ function tick() {
 	Update();
 	Draw();
 	DrawMe();
+	MoveMe();
 };
 
 
