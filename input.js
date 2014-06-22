@@ -1,6 +1,9 @@
 /**
  * @author HMG
  */
+/*
+ * KEYBOARD OBJECT
+ */
 var key = {
 	d:false,
 	left: false,

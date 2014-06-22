@@ -6,25 +6,25 @@ var ctx = c.getContext("2d");
 var FPS = 60;
 var GameMode = 1;
 
-function ClearScreen(){
-	ctx.clearRect(0,0,640,480);
+function ClearScreen(){				//Clears the Screen
+	ctx.clearRect(0,0,640,480);	
 }
 
-function Update(){
+function Update(){					//Update Values
 	
 };
 
-function Draw(){
-	
-};
-
-function tick() {
-	ClearScreen();
-	Update();
-	Draw();
+function Draw(){					//Animation and Motion
+	DrawMap();
 	DrawMe();
 	MoveMe();
 };
 
+function tick() {				//Game Tick
+	ClearScreen();
+	Update();
+	Draw();
+};
 
-window.setInterval(tick, 1000/FPS);
+
+window.setInterval(tick, 1000/FPS);		//Set Interval
