@@ -45,6 +45,7 @@ function DrawMe(){
 	ctx.fillText("left: " + key.left,360, 150);
 	ctx.fillText("Direction: " + MyDirection, 360,170);
 	ctx.fillText("Still: " + Still, 360, 190);*/
+
 	
 	if (MyPhase <15){
 		ctx.drawImage(Me,0,(MyDirection*32) + 1,32,32,MyX,MyY,32,32);
