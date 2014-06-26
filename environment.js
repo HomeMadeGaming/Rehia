@@ -2,8 +2,11 @@
  * @author HMG
  * 
  * 		GENERATE ENVIRONMENT
+ * 			DrawMap() procedurally selects tiles from a tileset and places them on the canvass. Tiles that are outside of player's sight
+ * 				are skipped.
+ * 			Collision{} houses functions for collision detection with the edge of the screen and the map.
  */
-var Columns = 23;
+var Columns = 23; //number of columns in current tileset.
 var TileSet = new Image(); TileSet.src = "tileset.png";
 
 
@@ -18,7 +21,6 @@ function DrawMap(){
 			var CameraX = (Player.x - (9.5*32));
 			var CameraY = (Player.y - (7*32));
 			ctx.drawImage(TileSet, px*32,py*32,32,32,(i*32) - CameraX,(j*32) - CameraY,32,32);
-			//ctx.drawImage(TileSet, 0, 0);
 			}
 			if (i<((Player.x/32)-15)){
 				i = Math.floor(Player.x/32)-15;
@@ -61,36 +63,47 @@ var Collision = {
 			var ProxyLeftDown = ProxyXLeft + (ProxyYDown * Map.Width);
 			var ProxyRightDown = ProxyXRight + (ProxyYDown * Map.Width);
 			if (Map.Layer1[ProxyLeftUp] === Map.Solid[i]){
-				//ctx.font = "20px Arial"; ctx.fillStyle = "black";
-				//ctx.fillText("Left up",20,20);
 				Player.x += Player.Speed;
 				Player.y += Player.Speed;
 			}
 			if (Map.Layer1[ProxyRightUp] === Map.Solid[i]){
-				//ctx.font = "20px Arial"; ctx.fillStyle = "black";
-				//ctx.fillText("Right up",20,20);
 				Player.x -= Player.Speed;
 				if (Map.Layer1[ProxyLeftUp] != Map.Solid[i]){
 					Player.y += Player.Speed;
 				}
 			}
 			if (Map.Layer1[ProxyLeftDown] === Map.Solid[i]){
-				//ctx.font = "20px Arial"; ctx.fillStyle = "black";
-				//ctx.fillText("Left up",20,20);
 				Player.y -= Player.Speed;
-				if (Map.Layer1[ProxyLeftUp] === Map.Solid[i]){
+				if (Map.Layer1[ProxyLeftUp] != Map.Solid[i]){
 					Player.x +=Player.Speed;
 				}
 			}
 			if (Map.Layer1[ProxyRightDown] === Map.Solid[i]){
-				//ctx.font = "20px Arial"; ctx.fillStyle = "black";
-				//ctx.fillText("Right up",20,20);
 				if (Map.Layer1[ProxyLeftDown] != Map.Solid[i]){
 					Player.y -= Player.Speed;
 				}	
-				if (Map.Layer1[ProxyRightUp] === Map.Solid[i]){
+				if (Map.Layer1[ProxyRightUp] != Map.Solid[i]){
 					Player.x -= Player.Speed;
 				}
+			}
+			/**
+			 * Extra coding to prevent glitching around corners.
+			 */
+			if (Map.Layer1[ProxyRightDown] == Map.Solid[i] && Map.Layer1[ProxyRightUp] === Map.Solid[i] && Map.Layer1[ProxyLeftUp] === Map.Solid[i]){
+				Player.x -= Player.Speed;
+				Player.y += Player.Speed;
+			}
+			if (Map.Layer1[ProxyLeftDown] == Map.Solid[i] && Map.Layer1[ProxyRightUp] === Map.Solid[i] && Map.Layer1[ProxyLeftUp] === Map.Solid[i]){
+				Player.x += Player.Speed;
+				Player.y += Player.Speed;
+			}
+			if (Map.Layer1[ProxyLeftDown] == Map.Solid[i] && Map.Layer1[ProxyRightDown] === Map.Solid[i] && Map.Layer1[ProxyLeftUp] === Map.Solid[i]){
+				Player.x += Player.Speed;
+				Player.y -= Player.Speed;
+			}
+			if (Map.Layer1[ProxyLeftDown] == Map.Solid[i] && Map.Layer1[ProxyRightDown] === Map.Solid[i] && Map.Layer1[ProxyRightUp] === Map.Solid[i]){
+				Player.x -= Player.Speed;
+				Player.y -= Player.Speed;
 			}
 		}
 	}

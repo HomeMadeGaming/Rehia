@@ -9,8 +9,8 @@
  * 
  *		MAIN GAME ENGINE 
  *
- * Functions are divided and written in seperate .js files. This file runes those functions
- * and is responsible for ddetermining when to run those functions.
+ * Functions are divided and written in seperate .js files. This file runs those functions
+ * and is responsible for determining when to run those functions.
  */
 
 var c = document.getElementById("canvas");	//Find the canvas
@@ -18,6 +18,7 @@ var ctx = c.getContext("2d");				//Get 2d context for canvas
 var FPS = 60;
 var TICK = 60;
 var GameMode = 1;
+var PIXELS = 32;
 
 function ClearScreen(){				//Clears the Screen
 	ctx.clearRect(0,0,640,480);	
@@ -28,15 +29,14 @@ function Update(){					//Update Values
 	Collision.Edge();
 	Collision.Map();
 	Music.Dynamics();
+	GameEvents();
 };
 
 function Draw(){					//Animation and Motion
 	ClearScreen();
 	DrawMap();
 	Player.Draw();
-	//DEBUG();
 };
-
 
 Music.Start();
 window.setInterval(Draw, 1000/FPS);		//Set Interval

@@ -15,10 +15,12 @@ rehia.css: stylesheet that makes the webpage beautiful
 
 main.js: the main game engine, sets the FPS and calls the functions
 
-input.js:  calls listenor event for keyboard strokes
+input.js:  calls listener event for keyboard strokes
 
 character.js: functions for character animation, movement, and interaction
 
-environment.js: function for environment drawing
+environment.js: function for environment drawing, now scrolls with character and collision detection
 
 loadmap.js: function for loading different regions
+
+music.js: adds music function, and ability to smoothly transition to different tracks.

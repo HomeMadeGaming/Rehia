@@ -20,10 +20,10 @@ var Player = {
 		if (this.Phase===0){										//Stand
 			ctx.drawImage(this.Sprite,33,(this.Direction*32)+1,32,32,304,224,32,32);
 		}
-		if (this.Phase>0 && this.Phase<=50){						//Left Step
+		if (this.Phase>0 && this.Phase<=50){						//Left Foot
 			ctx.drawImage(this.Sprite,0,(this.Direction*32)+1,32,32,304,224,32,32);
 		}
-		if (this.Phase>50 && this.Phase<=100){						//Right Step
+		if (this.Phase>50 && this.Phase<=100){						//Right Foot
 			ctx.drawImage(this.Sprite,64,(this.Direction*32)+1,32,32,304,224,32,32);
 		}
 	},
