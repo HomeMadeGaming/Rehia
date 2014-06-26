@@ -1,11 +1,13 @@
 /**
  * @author HMG
+ * 
+ * 		KEYBOARD LISTENER
+ * 
+ * Listen to keystrokes and assign true or false values to different variables.
  */
-/*
- * KEYBOARD OBJECT
- */
-var key = {
-	d:false,
+
+var key = {						//for simplicity sake, values are stored in the "key" object
+	d:false,					//and each property should match the key pressed in real life
 	left: false,
 	right: false,
 	up:  false,
@@ -45,9 +47,20 @@ window.onkeydown = function(e){			//listen for key press
 		case 80://PAUSE
 		key.p = true;
 		break;
+		
+		case 16:
+		key.shift = true;
+		break;
+		
+		case 219:
+		key.leftbracket = true;
+		break;
+		
+		case 221:
+		key.rightbracket = true;
+		break;
 	}
 };
-
 
 window.onkeyup = function(e){ 			//listen for key release
 	e = e || window.event;
@@ -79,6 +92,18 @@ window.onkeyup = function(e){ 			//listen for key release
 		
 		case 80://PAUSE
 		key.p = false;
+		break;
+		
+		case 16:
+		key.shift = false;
+		break;
+		
+		case 219:
+		key.leftbracket = false;
+		break;
+		
+		case 221:
+		key.rightbracket = false;
 		break;
 	}
 };
